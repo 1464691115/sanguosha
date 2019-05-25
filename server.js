@@ -10,6 +10,6 @@ app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath
 }));
 
-app.listen(3000,function(){
+app.listen(8080,function(){
     console.log('测试成功！！！');
 });

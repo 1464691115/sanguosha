@@ -1,14 +1,1 @@
-.warp{
-    padding-top: 40px;                                               
-    width: 100%;
-    height: auto;
-    min-width: 1050px;
-    max-width: 1920px;
-    background: url("../image/back-home.jpg") top center no-repeat;
-}
-.main{
-    margin:0 70px;
-    height: 100px;
-    border-top:1px solid red;
-
-}
+﻿.warp{padding-top:40px;width:100%;height:auto;min-width:1050px;max-width:1920px;background:url("../image/back-home.jpg") top center no-repeat}.main{margin:0 70px;width:185px}.main .contain{display:flex;margin-top:250px}.main .contain .con-left{margin-right:15px}.main .contain .con-left .con-z-bottom{padding:15px;text-align:center;background:#fff}.main .contain .con-left .con-z-bottom .content-icon{margin:0 auto;width:120px;height:20px;background-image:url("../image/Icon-all.png");background-position:290px 50px;display:block}.main .contain .con-left .con-z-bottom .user-icon{width:18px;height:18px;background-image:url("../image/Icon-all.png");display:inline-block}.main .contain .con-left .con-z-bottom .register .user-icon{background-position:-466px -359px;transition:margin-bottom .5s}.main .contain .con-left .con-z-bottom .register .user-icon:hover{margin-bottom:10px}.main .contain .con-left .con-z-bottom .xinSh .user-icon{background-position:-466px -331px;transition:margin-bottom .5s}.main .contain .con-left .con-z-bottom .xinSh .user-icon:hover{margin-bottom:10px}.main .contain .con-left a{font-size:1.2em;font-weight:1000;font-family:"仿宋";line-height:40px}
