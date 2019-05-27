@@ -1,3 +1,10 @@
+/**
+ * online三国杀
+ * author:liukesen
+ * data: 2019.5.7
+ */
+
+
 .warp {
     padding-top: 40px;
     width: 100%;
@@ -5,68 +12,120 @@
     min-width: 1050px;
     max-width: 1920px;
     background: url("../image/back-home.jpg") top center no-repeat;
-}
 
-.main {
-    margin: 0 70px;
-    width: 185px;
+    .main {
+        width: 100%;
+        padding: 0 70px;
 
-    .contain {
-        display: flex;
-        margin-top: 250px;
+        .contain {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            margin-top: 250px;
 
-        .con-left {
-            margin-right: 15px;
-            .con-z-bottom {
-                padding: 15px;
-                text-align: center;
-                background: #fff;
+            .con-left {
+                margin-right: 15px;
 
-                .content-icon {
-                    margin: 0 auto;
-                    width: 120px;
-                    height: 20px;
-                    background-image: url("../image/Icon-all.png");
-                    background-position: 290px 50px;
-                    display: block;
-                }
+                .con-z-bottom {
+                    padding: 15px;
+                    text-align: center;
+                    background: #fff;
 
-                .user-icon {
-                    width: 18px;
-                    height: 18px;
-                    background-image: url("../image/Icon-all.png");
-                    display: inline-block;
-                }
+                    .content-icon {
+                        margin: 0 auto;
+                        width: 120px;
+                        height: 20px;
+                        background-image: url("../image/Icon-all.png");
+                        background-position: 290px 50px;
+                        display: block;
+                    }
 
-                .register {
                     .user-icon {
-                        background-position: -466px -359px;
-                        transition: margin-bottom .5s;
+                        width: 18px;
+                        height: 18px;
+                        background-image: url("../image/Icon-all.png");
+                        display: inline-block;
+                    }
 
-                        &:hover {
-                            margin-bottom: 10px;
+                    .register {
+                        .user-icon {
+                            background-position: -466px -359px;
+                            -webkit-transition: margin-bottom .5s;
+                            transition: margin-bottom .5s;
+
+                            &:hover {
+                                margin-bottom: 10px;
+                            }
                         }
+                    }
+
+                    .xinSh {
+
+                        .user-icon {
+                            background-position: -466px -331px;
+                            -webkit-transition: margin-bottom .5s;
+                            transition: margin-bottom .5s;
+
+                            &:hover {
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+
+                    a {
+                        font-size: 1.2em;
+                        font-weight: 1000;
+                        font-family: "仿宋";
+                        line-height: 50px;
                     }
                 }
 
-                .xinSh {
 
-                    .user-icon {
-                        background-position: -466px -331px;
-                        transition: margin-bottom .5s;
-
-                        &:hover {
-                            margin-bottom: 10px;
-                        }
-                    }
-                }
             }
 
-            a {
-                font-size: 1.2em;
-                font-weight: 1000;
-                font-family: "仿宋";
-                line-height: 40px;
+            $conMid:740px;
+
+            .con-mid {
+                position: relative;
+                width: $conMid;
+                overflow: hidden;
+
+                .lun-boNav {
+                    width: $conMid*5;
+                    height: 100%;
+                    position: absolute;
+                    -webkit-transition: left .5s;
+                    transition: left .5s;
+
+                    .lb-image {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                    }
+                }
+
+                .lb-page {
+                    position: absolute;
+                    bottom: 0;
+                    width: $conMid;
+                    height: 30px;
+                    background-color: rgba($color: #000000, $alpha: .9);
+                    z-index: 2;
+                    cursor: pointer;
+
+                    @function lbLiPain($i) {
+                        @return (($i)-(56px*5))/10;
+                    }
+                    li {
+                        float: left;
+                        padding: 5px lbLiPain($conMid);
+                        font-size: 14px;
+                        color: #8c8c8c;;
+                    }
+                    .page-on{
+                        background-color:rgba($color: #857366, $alpha: .9); 
+                        color: #fff;
+                    }
+                }
             }
         }
     }
