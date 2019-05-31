@@ -8,18 +8,6 @@ window.onload = function () {
     var lbImgDom = document.getElementsByClassName("lun-boNav")[0];
     var pageIndex = 1;
     var lbEvents = new lbEvent(lbImgDom, 740);
-    var lbTime = setInterval(() => {
-        if (pageIndex > 4) {
-            pageIndex = 0;
-        }
-        //自动下一个滚动
-        for (let i = 0; i < listDomDiv.length; i++) {
-            listDomDiv[i].className = "";
-        }
-        listDomDiv[pageIndex].className = "page-on";
-        lbEvents.setOn(pageIndex);
-        pageIndex++;
-    }, 3000);
 
 }
 
@@ -32,14 +20,27 @@ window.onload = function () {
 function onCLickAction(dom, addClassName) {
     this.dom = dom;
     this.class = addClassName;
-    this.lbTime = window.lbTime;
+    lbTime(){
+       setInterval(() => {
+        if (pageIndex > 4) {
+            pageIndex = 0;
+        }
+        //自动下一个滚动
+        for (let i = 0; i < listDomDiv.length; i++) {
+            listDomDiv[i].className = "";
+        }
+        listDomDiv[pageIndex].className = "page-on";
+        lbEvents.setOn(pageIndex);
+        pageIndex++;
+    }, 3000);
+    }()
 }
 onCLickAction.prototype = {
     sayEvent: function () {
         for (let i = 0; i < this.dom.length; i++) {
             this.dom[i].onclick = () => {
-                clearInterval(this.lbTime);
-                console.log(this.lbTime);
+                // clearInterval(this.call(window).lbTime);
+                console.log(this);
                 for (var j = 0; j < this.dom.length; j++) {
                     this.dom[j].className = '';
                 }
