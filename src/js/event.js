@@ -20,8 +20,7 @@ window.onload = function () {
 function onCLickAction(dom, addClassName) {
     this.dom = dom;
     this.class = addClassName;
-    lbTime(){
-       setInterval(() => {
+    setInterval(() => {
         if (pageIndex > 4) {
             pageIndex = 0;
         }
@@ -33,7 +32,6 @@ function onCLickAction(dom, addClassName) {
         lbEvents.setOn(pageIndex);
         pageIndex++;
     }, 3000);
-    }()
 }
 onCLickAction.prototype = {
     sayEvent: function () {
