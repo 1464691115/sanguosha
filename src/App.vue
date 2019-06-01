@@ -61,6 +61,30 @@
             </ul>
           </div>
         </div>
+        <div class="con-right">
+          <div class="c-r-top">
+            <a href="#">
+            </a>
+          </div>
+          <div class="c-r-bottom">
+            <a href="#">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="contian">
+        <div class="con-left">
+          <div class="QRCode">
+            <img src="../src/assets/image/QRcode.jpg" alt="">
+          </div>
+          <div class="download">
+            <a href="">
+              
+            </a>
+          </div>
+        </div>
+        <div class="con-mid"></div>
+        <div class="con-rigth"></div>
       </div>
     </div>
     <Footer></Footer>
@@ -82,8 +106,8 @@ export default {
 };
 </script>
 <style scoped>
-@import url("./assets/css/reset.css");
 @import url("./assets/css/index.css");
+@import url("./assets/css/reset.css");
 </style>
 
 
