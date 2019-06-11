@@ -144,6 +144,60 @@
             </li>
           </ul>
         </div>
+        <div class="con-mid">
+          <div class="kapai">
+            <div class="bd">
+              <div
+                class="general-tab gen-first"
+                v-for="(item,index) in kBaoClassList"
+                :class="{'opacity':kBaoClassIndex!=index+1}"
+              >
+                <div class="general-info">
+                  <h4>
+                    <span>{{item.name}}</span>
+                  </h4>
+                  <p>{{item.text}}</p>
+                </div>
+                <div class="general-img">
+                  <img :src="item.imgUrl" alt>
+                </div>
+              </div>
+            </div>
+            <ul class="hd">
+              <li
+                v-for="item in 5"
+                :class="['gen'+item,{'genOn':kBaoClassIndex==item}]"
+                @click="kBaoClassIndex=item"
+              ></li>
+            </ul>
+          </div>
+        </div>
+        <div class="con-right">
+          <ul class="games">
+            <li v-for="item in 4">
+              <a
+                @mousemove="gameHover=item"
+                @mouseout="gameHover=-1"
+                :class="['gameBack',{'gameTran':gameHover==item}]"
+              >
+                <em :class="'user-icon user-icon_game'+item"></em>
+                <i :class="{'gameIXuanz':gameHover==item}"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="contain">
+        <div class="con-left">
+          <div class="quick">
+            <h3 class="topic">
+              <em class="user-icon user-icon_quick"></em>
+            </h3>
+            <ul class="bars link">
+              <li v-for="item in 8"></li>
+            </ul>
+          </div>
+        </div>
         <div class="con-mid"></div>
         <div class="con-right"></div>
       </div>
@@ -160,6 +214,12 @@ import ident1 from "../src/assets/image/ident1.jpg";
 import ident2 from "../src/assets/image/ident2.jpg";
 import ident3 from "../src/assets/image/ident3.jpg";
 import ident4 from "../src/assets/image/ident4.jpg";
+import general1 from "../src/assets/image/general1.png";
+import general2 from "../src/assets/image/general2.png";
+import general3 from "../src/assets/image/general3.png";
+import general4 from "../src/assets/image/general4.png";
+import general5 from "../src/assets/image/general5.png";
+
 export default {
   components: { Footer, Logo },
   data() {
@@ -195,20 +255,65 @@ export default {
       playHover: 1,
       // 游戏模式图片
       playImage: [ident1, ident3, ident2, ident4],
-      // 游戏模式图片切换
-      playImageSwitching: function(i) {
-        let playDom = document.getElementById("play").children;
-        for (let i = 0; i < playDom.length; i++) {
-          const element = playDom[i];
-          element.className = "opacity";
-        }
-        playDom[i].className = "";
-      },
       // 新手礼包Hover图标上移
-      LinkIconTop: 0
+      LinkIconTop: 0,
+      // 卡包分类
+      kBaoClassIndex: 1,
+      kBaoClassList: [
+        {
+          name: "标准版武将",
+          text:
+            "三国杀经典武将包，包含魏、蜀、吴、群四方势力，共26名武将。更多武将攻略请点击右上角更多按钮查看武将资料站，或登陆游戏内查看武将详情。",
+          imgUrl: general1
+        },
+        {
+          name: "神话再临",
+          text:
+            "神话再临系列是三国杀的一个武将扩展包，取《孙子兵法·军争》中的“故其疾如风，其徐如林，侵掠如火，不动如山，难知如阴，动如雷震。”分为六个扩展包。",
+          imgUrl: general2
+        },
+        {
+          name: "一将成名",
+          text:
+            "三国杀武将设计大赛，由广大热爱桌游、热爱三国文化、热爱三国杀的动漫画手、设计人员一起设计的武将。包括一将成名2011、2012、2013、2014、2015五个扩展包。",
+          imgUrl: general3
+        },
+        {
+          name: "星火燎原",
+          text:
+            "三国杀十周年全新扩展包，取《三国演义》第六十九回“北斗主死，南斗主生。”其中南斗六星分别为天府星、天梁星、天机星、天同星、天相星、七杀星六个扩展包",
+          imgUrl: general4
+        },
+        {
+          name: "国战",
+          text:
+            "魏蜀吴群，双将配合，为国而战。分为标准包、阵包、势包共计76名武将",
+          imgUrl: general5
+        }
+      ],
+      gameHover: -1
     };
   },
-  methods: {}
+  methods: {
+    // 游戏模式图片切换
+    playImageSwitching: function(i) {
+      let playDom = document.getElementById("play").children;
+      for (let i = 0; i < playDom.length; i++) {
+        const element = playDom[i];
+        element.className = "opacity";
+      }
+      playDom[i].className = "";
+    }
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      var index = this.kBaoClassIndex;
+      if (index > 4) {
+        this.kBaoClassIndex = 0;
+      }
+      this.kBaoClassIndex++;
+    }, 2000);
+  }
 };
 </script>
 <style scoped>
