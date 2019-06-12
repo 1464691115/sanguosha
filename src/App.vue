@@ -83,7 +83,7 @@
           <div class="cm-z-left">
             <div class="zx-top">
               <span class="user-icon user-icon_news"></span>
-              <p></p>
+              <p class="underline"></p>
             </div>
             <div class="zx-bottom">
               <ul class="hd">
@@ -193,13 +193,75 @@
             <h3 class="topic">
               <em class="user-icon user-icon_quick"></em>
             </h3>
-            <ul class="bars link">
-              <li v-for="item in 8"></li>
+            <ul class="bars">
+              <li v-for="item in 8" @mouseover="barHover=item" @mouseout="barHover=-1">
+                <a href>
+                  <em :class="'user-icon user-icon_bar'+item"></em>
+                  <i :class="{'user-icon_bar_hover':barHover==item}"></i>
+                </a>
+              </li>
             </ul>
+            <div class="code">
+              <img src="../src/assets/image/code.jpg" alt>
+            </div>
           </div>
         </div>
-        <div class="con-mid"></div>
-        <div class="con-right"></div>
+        <div class="con-info">
+          <div class="community">
+            <div class="sq-top">
+              <span class="user-icon user-icon_cnity"></span>
+              <p class="underline"></p>
+            </div>
+            <div class="sq-text">
+              <ul class="sqList">
+                <li
+                  v-for="(item,index) in sqList"
+                  @mouseover="sqHover=index"
+                  @mouseout="sqHover=-1"
+                >
+                  <a href>
+                    <p :class="{'sqHover':sqHover==index}">{{item}}</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sq-img">
+              <a href>
+                <img src="../src/assets/image/shequ.jpg" alt="社区下方banner">
+              </a>
+            </div>
+          </div>
+          <div class="district">
+            <div class="tr-top">
+              <span class="user-icon user-icon_tr"></span>
+              <p class="underline"></p>
+            </div>
+            <div class="tr-nav">
+              <ul class="tr-nav-z">
+                <li v-for="(item,index) in trList" @click="trImageClick(index)">
+                  <a href="javascript:">
+                    <span :class="{'navActive':trClick==index}">{{item}}</span>
+                    <em v-if="index<3"></em>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="tr-imgTab">
+              <ul class="imgList" v-for="(trimgList,i) in trHHImgLIst">
+                <li v-for="(item,index) in trimgList">
+                  <a href>
+                    <div class="trImg">
+                      <img :src="item.imgUrl" alt>
+                    </div>
+                    <i class="back"></i>
+                    <p>{{item.text}}</p>
+                    <i class="user-icon user-icon_hh"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <Footer></Footer>
@@ -207,6 +269,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import Footer from "./components/bottom";
 import Logo from "./components/logo";
 import Event from "../src/js/event.js";
@@ -219,6 +282,30 @@ import general2 from "../src/assets/image/general2.png";
 import general3 from "../src/assets/image/general3.png";
 import general4 from "../src/assets/image/general4.png";
 import general5 from "../src/assets/image/general5.png";
+import shouhui1 from "../src/assets/image/shouhui1.png";
+import shouhui2 from "../src/assets/image/shouhui2.png";
+import shouhui3 from "../src/assets/image/shouhui3.png";
+import shouhui4 from "../src/assets/image/shouhui4.png";
+import shouhui5 from "../src/assets/image/shouhui5.png";
+import shouhui6 from "../src/assets/image/shouhui6.png";
+import xiaoshuo1 from "../src/assets/image/xiaoshuo1.png";
+import xiaoshuo2 from "../src/assets/image/xiaoshuo2.png";
+import xiaoshuo3 from "../src/assets/image/xiaoshuo3.png";
+import xiaoshuo4 from "../src/assets/image/xiaoshuo4.png";
+import xiaoshuo5 from "../src/assets/image/xiaoshuo5.png";
+import xiaoshuo6 from "../src/assets/image/xiaoshuo6.png";
+import COS1 from "../src/assets/image/COS1.jpg";
+import COS2 from "../src/assets/image/COS2.jpg";
+import COS3 from "../src/assets/image/COS3.jpg";
+import COS4 from "../src/assets/image/COS4.jpg";
+import COS5 from "../src/assets/image/COS5.jpg";
+import COS6 from "../src/assets/image/COS6.jpg";
+import wanjia1 from "../src/assets/image/wanjia1.png";
+import wanjia2 from "../src/assets/image/wanjia2.png";
+import wanjia3 from "../src/assets/image/wanjia3.png";
+import wanjia4 from "../src/assets/image/wanjia4.png";
+import wanjia5 from "../src/assets/image/wanjia5.png";
+import wanjia6 from "../src/assets/image/wanjia6.png";
 
 export default {
   components: { Footer, Logo },
@@ -291,7 +378,61 @@ export default {
           imgUrl: general5
         }
       ],
-      gameHover: -1
+      gameHover: -1,
+      //快捷导航
+      barHover: -1,
+      //社区专栏
+      sqList: [
+        "【获奖名单】三国杀知识竞答小剧场（第89期）",
+        "【获奖名单】三国杀知识竞答小剧场（第88期）",
+        "【预告】如果三国杀做一套扑克，你觉得老K都是谁？Q呢？",
+        "【社区活动】四方龙舟抢粽子大赛——游戏日（二）",
+        "【日排名公布】四方龙舟抢粽子大赛游戏日（一）",
+        "小桃来爆料啦，下一期的祈福武将是谁呢！"
+      ],
+      sqHover: -1,
+      //同人专区
+      trList: ["手绘漫画", "同人小说", "同人COS", "玩家风采"],
+      trClick: 0,
+      //同人专区下面的img
+      trHHImgLIst: [
+        //手绘漫画
+        [
+          { imgUrl: shouhui1, text: "【小杀摔倒啦】推倒土豪金，分元宝" },
+          { imgUrl: shouhui2, text: "【绘画】又一只鲍三娘" },
+          { imgUrl: shouhui3, text: "【绘图】矜持之花*大乔" },
+          { imgUrl: shouhui4, text: "【条漫传记】周瑜，真正的东吴大都督" },
+          { imgUrl: shouhui5, text: "【董白摔倒了】我们一起学猫叫" },
+          { imgUrl: shouhui6, text: "【手绘】Q版24节气 霜降张飞" }
+        ],
+        //同人小说
+        [
+          { imgUrl: xiaoshuo1, text: "司马徽:半山风雨看逍遥" },
+          { imgUrl: xiaoshuo2, text: "诸葛瞻:梦回季汉江湖里" },
+          { imgUrl: xiaoshuo3, text: "一代雄主的爱恨两难" },
+          { imgUrl: xiaoshuo4, text: "从广陵绝响看魏晋风度" },
+          { imgUrl: xiaoshuo5, text: "曹魏五谋臣之算无遗策智贾诩" },
+          { imgUrl: xiaoshuo6, text: "万紫千红总是春" }
+        ],
+        //同人Cos
+        [
+          { imgUrl: COS1, text: "郭嘉 · 天生郭奉孝，豪杰冠群英" },
+          { imgUrl: COS2, text: "陆逊 · 三分自是多英俊，又显江南陆逊高" },
+          { imgUrl: COS3, text: "小乔 · 东吴名将推公瑾，南国佳人说小乔" },
+          { imgUrl: COS4, text: "孙尚香·谁知一女轻天下， 欲易刘郎鼎峙心" },
+          { imgUrl: COS5, text: "孙策·却将江左业，分付紫髯郎 " },
+          { imgUrl: COS6, text: "曹丕 · 一双眼光射寒星，两弯眉浑如刷漆" }
+        ],
+        //
+        [
+          { imgUrl: wanjia1, text: "司马徽:半山风雨看逍遥" },
+          { imgUrl: wanjia2, text: "诸葛瞻:梦回季汉江湖里" },
+          { imgUrl: wanjia3, text: "一代雄主的爱恨两难" },
+          { imgUrl: wanjia4, text: "从广陵绝响看魏晋风度" },
+          { imgUrl: wanjia5, text: "曹魏五谋臣之算无遗策智贾诩" },
+          { imgUrl: wanjia6, text: "万紫千红总是春" }
+        ]
+      ]
     };
   },
   methods: {
@@ -303,6 +444,13 @@ export default {
         element.className = "opacity";
       }
       playDom[i].className = "";
+    },
+    //同人专区的切换
+    trImageClick:function(i){
+      let trDom = $(".imgList");
+      trDom.hide();
+      trDom.eq(i).fadeIn(700);
+      this.trClick = i;
     }
   },
   mounted() {
