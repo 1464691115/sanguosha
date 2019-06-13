@@ -677,7 +677,7 @@
       //视频
       .con-info {
         width: 1077px;
-        height: 842px;
+        height: 878px;
         //社区
         .community {
           background: #fff;
@@ -754,9 +754,6 @@
                     font-size: 0.38em;
                     transition: color 0.2s;
                   }
-                  .navActive {
-                    color: #a69280;
-                  }
                   em {
                     margin-top: 32px;
                     width: 1px;
@@ -773,7 +770,7 @@
             margin-top: 5px;
             height: 270px;
             .imgList {
-              &:not(:first-child){
+              &:not(:first-child) {
                 display: none;
               }
               li {
@@ -798,7 +795,7 @@
                     .back {
                       opacity: 0;
                     }
-                    .user-icon_hh {
+                    i {
                       transform: scale(1, 1);
                       opacity: 1;
                     }
@@ -807,16 +804,6 @@
                 a {
                   height: 100%;
                   display: block;
-                  .trImg {
-                    height: 100%;
-                    width: 100%;
-                    transition: all 0.3s;
-                    z-index: 2;
-                    overflow: hidden;
-                    img {
-                      transition: transform 0.3s;
-                    }
-                  }
                   .back {
                     position: absolute;
                     left: 0;
@@ -843,10 +830,140 @@
                     z-index: 2;
                     transition: color 0.3s;
                   }
-                  .user-icon_hh {
-                    background-position: -466px -174px;
-                    width: 30px;
-                    height: 30px;
+                  i {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -15px;
+                    margin-top: -15px;
+                    transform: scale(1.5, 1.5);
+                    transition: transform 0.3s;
+                    z-index: 3;
+                    opacity: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+        //视频
+        .video {
+          padding: 20px;
+          margin-top: 15px;
+          width: 100%;
+          height: (878px-413px-15px);
+          float: left;
+          background: #fff;
+          .video-top {
+            border-bottom: 1px solid #dfdfdf;
+            .user-icon_voTop {
+              background-position: -188px -341px;
+              width: 163px;
+              height: 17px;
+            }
+          }
+          .video-nav {
+            height: 60px;
+            .video-nav-z {
+              li {
+                float: left;
+                width: 120px;
+                text-align: center;
+                a {
+                  display: block;
+                  // padding: 5px 20px;
+                  span {
+                    font-size: 0.38em;
+                    transition: color 0.2s;
+                  }
+                  em {
+                    margin-top: 32px;
+                    width: 1px;
+                    height: 13px;
+                    background: #b3a293;
+                    float: right;
+                  }
+                }
+              }
+            }
+          }
+          .video-imgTab {
+            margin-top: 5px;
+            height: 270px;
+            .imgList {
+              &:not(:first-child) {
+                display: none;
+              }
+              li {
+                margin-right: 15px;
+                margin-bottom: 15px;
+                width: ((700px-50)/3);
+                height: (298px-15)/2;
+                border: 1px solid #000;
+                float: left;
+                position: relative;
+                &:nth-child(4n + 0),
+                &:last-child {
+                  margin-right: 0;
+                }
+                $videoImgWidth: ((1037px-15 * 3)-216.66 * 3);
+                $videoImgHeight: 298px;
+                &:first-child {
+                  margin-bottom: 0;
+                  width: $videoImgWidth;
+                  height: $videoImgHeight;
+                  img {
+                    width: $videoImgWidth;
+                    height: $videoImgHeight;
+                  }
+                }
+                &:hover {
+                  a {
+                    img {
+                      transform: scale(1.1, 1.1);
+                    }
+                    p {
+                      color: #cfa34c;
+                    }
+                    .back {
+                      opacity: 0;
+                    }
+                    i {
+                      transform: scale(1, 1);
+                      opacity: 1;
+                    }
+                  }
+                }
+                a {
+                  height: 100%;
+                  display: block;
+                  .back {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    transition: opacity 0.3s;
+                    background: rgba($color: #000000, $alpha: 0.3);
+                  }
+                  p {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 24px;
+                    font-size: 0.3em;
+                    font-family: "微软雅黑";
+                    color: #fff;
+                    overflow: hidden;
+                    padding: 0 10px;
+                    line-height: 24px;
+                    background: rgba($color: #000000, $alpha: 0.6);
+                    z-index: 2;
+                    transition: color 0.3s;
+                  }
+                  i {
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -865,7 +982,126 @@
       }
     }
     .contain:nth-child(4) {
-      height: 1000px;
+      height: 878px;
+    }
+    .contain:last-child {
+      background: #fff;
+      .con-info {
+        width: 100%;
+        height: 300px;
+        .syTab {
+          & > li:not(:last-child) {
+            border-right: 1px solid #dfdfdf;
+          }
+          li {
+            float: left;
+            .sy-left {
+              padding: (300px-238)/4 20px;
+              padding-top: 0;
+              height: 300px;
+              display: block;
+              position: relative;
+              overflow: hidden;
+              &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 142px;
+                height: 302px;
+                z-index: 1;
+                background-color: #e9e9e9;
+                transition: all 0.3s;
+                transform: translate(0, 100%);
+                transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+              }
+              &:hover {
+                &::before {
+                  transform: translate(0, 0) !important;
+                }
+              }
+              i {
+                display: block;
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                width: 29px;
+                height: 61px;
+                background: url("../image/gen.png") -31px -268px no-repeat;
+                z-index: 4;
+              }
+              em {
+                display: block;
+                width: 102px;
+                height: 238px;
+                background: url("../image/gonglue.png") no-repeat;
+                margin: 36px auto 0;
+                position: relative;
+                z-index: 3;
+              }
+              em.gong2 {
+                background-position: -105px 0;
+              }
+              em.gong3 {
+                background-position: -210px 0;
+              }
+              em.gong4 {
+                background-position: -315px 0;
+              }
+              em.gong5 {
+                background-position: -424px 0;
+              }
+            }
+            .gongLue {
+              background: #fff;
+              width: (1280-142px * 5)-5;
+              padding: 0 20px;
+              height: 300px;
+              overflow: hidden;
+              float: left;
+              .sq-top {
+                padding-top: 20px;
+                border-bottom: 1px solid #dfdfdf;
+                .user-icon_gongLue {
+                  background-position: -235px -126px;
+                  width: 170px;
+                  height: 17px;
+                }
+              }
+              .sq-text {
+                .sqList {
+                  margin-top: 20px;
+                  li {
+                    padding: 5px 0;
+                    &:hover {
+                      p {
+                        color: #a69280;
+                      }
+                    }
+                    a {
+                      p {
+                        height: 21px;
+                        font-size: 0.35em;
+                        font-family: "微软雅黑";
+                        transition: color 0.1s;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .contic {
+            display: block;
+            p {
+              font-size: 0.38em;
+              overflow: hidden;
+              float: left;
+              padding-right: 20px;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -902,4 +1138,29 @@
   width: 68px;
   padding-top: 18px;
   margin-bottom: -1px;
+}
+
+.navActive {
+  color: #a69280;
+}
+
+.user-icon_hh {
+  background-position: -466px -174px;
+  width: 30px;
+  height: 30px;
+}
+.user-icon_play {
+  background-position: -466px -214px;
+  width: 30px;
+  height: 30px;
+}
+.Img {
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s;
+  z-index: 2;
+  overflow: hidden;
+  img {
+    transition: transform 0.3s;
+  }
 }

@@ -247,13 +247,13 @@
               </ul>
             </div>
             <div class="tr-imgTab">
-              <ul class="imgList" v-for="(trimgList,i) in trHHImgLIst">
+              <ul class="imgList" v-for="(trimgList,i) in trHHImgList">
                 <li v-for="(item,index) in trimgList">
                   <a href>
-                    <div class="trImg">
+                    <div class="Img">
                       <img :src="item.imgUrl" alt>
                     </div>
-                    <i class="back"></i>
+                    <div class="back"></div>
                     <p>{{item.text}}</p>
                     <i class="user-icon user-icon_hh"></i>
                   </a>
@@ -261,6 +261,71 @@
               </ul>
             </div>
           </div>
+          <div class="video">
+            <div class="video-top">
+              <i class="user-icon user-icon_voTop"></i>
+              <p class="underline"></p>
+            </div>
+            <div class="video-nav">
+              <ul class="video-nav-z">
+                <li v-for="(item,index) in videoList" @click="videImageClick(index)">
+                  <a href="javascript:">
+                    <span :class="{'navActive':videoClick==index}">{{item}}</span>
+                    <em v-if="index<2"></em>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="video-imgTab">
+              <ul class="imgList" v-for="(videimgList,i) in videImgList">
+                <li v-for="(item,index) in videimgList">
+                  <a href>
+                    <div class="Img">
+                      <img :src="item.imgUrl" alt>
+                    </div>
+                    <div class="back" v-if="index!=0"></div>
+                    <p>{{item.text}}</p>
+                    <i class="user-icon user-icon_play"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contain">
+        <div class="con-info strategy">
+          <ul class="syTab">
+            <li>
+              <a href class="sy-left">
+                <em class="gonglue1"></em>
+                <i></i>
+              </a>
+            </li>
+            <li>
+              <div class="gongLue">
+                <div class="sq-top">
+                  <span class="user-icon user-icon_gongLue"></span>
+                  <p class="underline"></p>
+                </div>
+                <div class="sq-text">
+                  <ul class="sqList">
+                    <li v-for="(item,index) in footerList">
+                      <a href>
+                        <p>{{item}}</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li v-for="item in 4">
+              <a href class="sy-left">
+                <em :class="'gong'+(item+1)"></em>
+                <i></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -277,6 +342,8 @@ import ident1 from "../src/assets/image/ident1.jpg";
 import ident2 from "../src/assets/image/ident2.jpg";
 import ident3 from "../src/assets/image/ident3.jpg";
 import ident4 from "../src/assets/image/ident4.jpg";
+
+//同人专区的img
 import general1 from "../src/assets/image/general1.png";
 import general2 from "../src/assets/image/general2.png";
 import general3 from "../src/assets/image/general3.png";
@@ -306,6 +373,29 @@ import wanjia3 from "../src/assets/image/wanjia3.png";
 import wanjia4 from "../src/assets/image/wanjia4.png";
 import wanjia5 from "../src/assets/image/wanjia5.png";
 import wanjia6 from "../src/assets/image/wanjia6.png";
+
+//视频中心的img
+import gonglue1 from "../src/assets/image/gonglue1.jpg";
+import gonglue2 from "../src/assets/image/gonglue2.jpg";
+import gonglue3 from "../src/assets/image/gonglue3.jpg";
+import gonglue4 from "../src/assets/image/gonglue4.jpg";
+import gonglue5 from "../src/assets/image/gonglue5.jpg";
+import gonglue6 from "../src/assets/image/gonglue6.jpg";
+import gonglue7 from "../src/assets/image/gonglue7.jpg";
+import videotr1 from "../src/assets/image/videotr1.jpg";
+import videotr2 from "../src/assets/image/videotr2.png";
+import videotr3 from "../src/assets/image/videotr3.jpg";
+import videotr4 from "../src/assets/image/videotr4.jpg";
+import videotr5 from "../src/assets/image/videotr5.jpg";
+import videotr6 from "../src/assets/image/videotr6.jpg";
+import videotr7 from "../src/assets/image/videotr7.jpg";
+import saishi1 from "../src/assets/image/saishi1.jpg";
+import saishi2 from "../src/assets/image/saishi2.jpg";
+import saishi3 from "../src/assets/image/saishi3.jpg";
+import saishi4 from "../src/assets/image/saishi4.jpg";
+import saishi5 from "../src/assets/image/saishi5.jpg";
+import saishi6 from "../src/assets/image/saishi6.jpg";
+import saishi7 from "../src/assets/image/saishi7.jpg";
 
 export default {
   components: { Footer, Logo },
@@ -395,7 +485,7 @@ export default {
       trList: ["手绘漫画", "同人小说", "同人COS", "玩家风采"],
       trClick: 0,
       //同人专区下面的img
-      trHHImgLIst: [
+      trHHImgList: [
         //手绘漫画
         [
           { imgUrl: shouhui1, text: "【小杀摔倒啦】推倒土豪金，分元宝" },
@@ -432,6 +522,53 @@ export default {
           { imgUrl: wanjia5, text: "曹魏五谋臣之算无遗策智贾诩" },
           { imgUrl: wanjia6, text: "万紫千红总是春" }
         ]
+      ],
+      //视频中心
+      videoList: ["攻略集锦", "同人创作", "赛事视频"],
+      videoClick: 0,
+      videImgList: [
+        //攻略集锦
+        [
+          { imgUrl: gonglue1, text: "花式吊打 好施者们的默契" },
+          { imgUrl: gonglue2, text: "循序渐进 一连到终" },
+          { imgUrl: gonglue3, text: "一张牌引发的血案" },
+          { imgUrl: gonglue4, text: "自书己见 大刷特刷" },
+          { imgUrl: gonglue5, text: "没有忠臣的四月" },
+          { imgUrl: gonglue6, text: "第五反贼" },
+          { imgUrl: gonglue7, text: "智慧岂能少得了装身份？" }
+        ],
+        //同人创作
+        [
+          { imgUrl: videotr1, text: "手书：三国杀XDRRR!!" },
+          {
+            imgUrl: videotr2,
+            text: "【司马嘉-玄亮-策瑜-丕植】建安烟云录(同人剧情歌)"
+          },
+          { imgUrl: videotr3, text: "《建安烟云录》(同人剧情歌)" },
+          { imgUrl: videotr4, text: "左慈的神秘讲座" },
+          { imgUrl: videotr5, text: "【鬼畜三国杀】水手——那个男人" },
+          { imgUrl: videotr6, text: "第五反贼三国杀诗朗诵——短歌行" },
+          { imgUrl: videotr7, text: "【“温馨”鬼畜】一首 三国杀 生日歌献给你" }
+        ],
+        //赛事视频
+        [
+          { imgUrl: saishi1, text: "2018SCL春季赛TOP5【第六期】" },
+          { imgUrl: saishi2, text: "2018SCL春季赛TOP5【第七期】" },
+          { imgUrl: saishi3, text: "三国杀百万奖金千人大赛冠军诞生" },
+          { imgUrl: saishi4, text: "三国杀十周年嘉年华颜值玩家一览" },
+          { imgUrl: saishi5, text: "三国杀百万奖金千人大赛选手入场" },
+          { imgUrl: saishi6, text: "三国杀十周年嘉年华现场" },
+          { imgUrl: saishi7, text: "三国杀十周年千人面杀全程回顾" }
+        ]
+      ],
+      //攻略List
+      footerList: [
+        "[十周年][模式玩法]【国战对局思路之一】群雄逐鹿，须得刚柔并进",
+        "[十周年][武将攻略]【司马徽攻略】荐杰二才明大义，称好三乡尚高德",
+        "[十周年][模式玩法]【新标国战第一弹】只是嘴哥的指纹被猫女偷了而已",
+        "[十周年][武将攻略]【武娘】武娘还是三娘，傻傻分不清—鲍三娘攻略",
+        "[OL][模式玩法]【神之试炼】秋冬组通关技术指南",
+        "[十周年][武将攻略]【鲍三娘攻略】镇南の武娘姬丶鲍三娘参上"
       ]
     };
   },
@@ -446,11 +583,18 @@ export default {
       playDom[i].className = "";
     },
     //同人专区的切换
-    trImageClick:function(i){
-      let trDom = $(".imgList");
+    trImageClick: function(i) {
+      let trDom = $(".tr-imgTab .imgList");
       trDom.hide();
       trDom.eq(i).fadeIn(700);
       this.trClick = i;
+    },
+    // 视频导航切换
+    videImageClick: function(i) {
+      let videDom = $(".video-imgTab .imgList");
+      videDom.hide();
+      videDom.eq(i).fadeIn(700);
+      this.videoClick = i;
     }
   },
   mounted() {

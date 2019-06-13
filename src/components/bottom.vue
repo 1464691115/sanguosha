@@ -49,12 +49,16 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 20px 10px;
-} 
+}
 li {
   display: inline-block;
   margin: 0 10px;
 }
-ul li:first-child{
+p{
+  font-size: .7em;
+  text-align: center;
+}
+ul li:first-child {
   margin-left: 30%;
 }
 a {
@@ -65,5 +69,10 @@ a {
   height: 40px;
   background: #c9c9c9;
   display: inline-block;
+}
+.footer {
+  background: url("../assets/image/footer.jpg") no-repeat;
+  padding: 150px 0 120px;
+  overflow: hidden;
 }
 </style>
