@@ -1,4 +1,5 @@
 # sanguosha
+先npm install重新导一下，然后就可以运行了npm run dev 端口号是8080
 
 > A Vue.js project
 
